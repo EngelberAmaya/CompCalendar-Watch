@@ -1,0 +1,25 @@
+<h3 class="text-center">Calendario</h3><br>
+<div class="row">
+	<div class="col">
+		<button (click)="setMonth(-1)">&lt;</button>
+		{{date | date:"dd-MM-yyyy"}}
+		<button (click)="setMonth(+1)">&gt;</button>
+	</div>
+	<div class="col">
+		<!--<button (click)="setYear(-365)">&lt;</button>
+		{{date | date:"dd-MM-yyyy"}}
+		<button (click)="setYear(+365)">&gt;</button>-->
+	</div>
+</div>
+<br>
+
+<ul>
+  <li class="days" *ngFor="let day of days"> {{day}} </li>
+  <li *ngFor="let date of dates"
+    [ngClass]="{grey: !isSameMonth(date)}"
+    (click)="selected.emit(date)">
+    {{date | date:'d'}}
+  </li>
+</ul>
+
+
